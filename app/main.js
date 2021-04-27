@@ -172,7 +172,6 @@ window.onload = function () {
                     localStorage.removeItem("savedDato");
                     datoGuardado.classList.add('hidden');
                 });
-
             }
 
         });

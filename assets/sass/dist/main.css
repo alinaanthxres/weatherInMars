@@ -3468,6 +3468,7 @@ body {
   flex-direction: column;
   padding: 2em 0 0em 2em;
   justify-content: flex-end;
+  background: url("assets/img/MacBook - 1.png");
 }
 .app.sunny {
   background: url("/assets/img/MacBook - 1.png");
