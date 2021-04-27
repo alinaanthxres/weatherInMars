@@ -1,0 +1,454 @@
+@import 'lib/vars';
+@import 'lib/mixins';
+@import 'lib/reboot';
+@import 'lib/fontawesome/font-awesome';
+@import 'lib/fontface';
+@import 'lib/keyframes';
+
+html,
+body {
+    font-size: $base * 2;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: $base * 3;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 2em 0 0em 2em;
+    justify-content: flex-end;
+
+    &.sunny {
+        background: url("/assets/img/MacBook\ -\ 1.png");
+        background-size: auto 100%;
+        background-position-x: center;
+
+    }
+
+    &.windy {
+        background: url("/assets/img/fondo_windy.png");
+        background-size: auto 100%;
+        background-position-x: center;
+    }
+
+    &.cloudy {
+        background: url("/assets/img/fondo_cloudy.png");
+        background-size: auto 100%;
+        background-position-x: center;
+    }
+
+    .open {
+        max-width: fit-content;
+        padding: 0 0.5em 0 0.5em;
+        margin-bottom: 1em;
+        border: none;
+        border-radius: 30px;
+        background-color: rgb(0, 0, 0);
+        color: white;
+
+        &:focus {
+            border: none;
+            outline: none;
+        }
+
+        &.activeButton {
+            background-color: rgb(53, 53, 53);
+        }
+    }
+
+    .date {
+        font-weight: 100;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.2em;
+        background-color: rgb(255, 68, 21);
+        border-radius: 30px;
+        max-width: fit-content;
+        padding: 0.4em 1em 0.5em 0.8em;
+
+        .starIcon {
+            font-size: 2em;
+            padding-right: 0.4em;
+            color: #B92C00;
+        }
+
+        h1 {
+            margin-bottom: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 100;
+            font-size: 1.6em;
+            color: white;
+        }
+    }
+
+    .marsData {
+        z-index: 1;
+        width: 100%;
+        display: flex;
+        align-self: flex-end;
+        padding-bottom: 1em;
+
+        .temp {
+            display: flex;
+
+            img {
+                max-width: 100px;
+                height: fit-content;
+                margin-right: 2em;
+            }
+        }
+
+        .data {
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+
+
+            .temperatura {
+                margin-bottom: 1em;
+
+                .aire {
+                    display: flex;
+                    align-items: flex-start;
+
+                    img {
+                        max-width: 35px;
+                        height: 100%;
+                        margin-right: 1em;
+                    }
+
+                    .aireMax {
+                        @include maxType;
+
+                    }
+
+                    .aireMin {
+                        @include minType;
+
+                    }
+                }
+
+                .line {
+                    border: 1px solid rgb(82, 82, 82);
+                }
+
+                .suelo {
+                    display: flex;
+                    align-items: center;
+
+                    img {
+                        max-width: 35px;
+                        height: 100%;
+                        margin-right: 1em;
+
+                    }
+
+                    .sueloMax {
+                        @include maxType;
+                    }
+
+                    .sueloMin {
+                        @include minType;
+                    }
+                }
+
+            }
+
+            .otherData {
+                display: flex;
+
+                .sunrise {
+                    margin-right: 1em;
+                    display: flex;
+                    flex-flow: column;
+                    align-items: center;
+
+                    img {
+                        max-width: 30px;
+                    }
+
+                    .sunriseTime {
+                        @include otherDataType;
+                    }
+                }
+
+                .sunset {
+                    margin-right: 1em;
+                    display: flex;
+                    flex-flow: column;
+                    align-items: center;
+
+                    img {
+                        max-width: 30px;
+                    }
+
+                    .sunsetTime {
+                        @include otherDataType
+                    }
+                }
+
+                .pressure {
+                    display: flex;
+                    flex-flow: column;
+                    align-items: center;
+
+                    img {
+                        max-width: 30px;
+                    }
+
+                    .presion {
+                        @include otherDataType
+                    }
+                }
+            }
+
+        }
+    }
+
+    .menu {
+        display: flex;
+        flex-flow: row-reverse;
+        align-self: flex-end;
+        position: absolute;
+        transition: transform .5s ease-in-out;
+        overflow: scroll;
+        overflow-x: hidden;
+
+        .content {
+            border-radius: 30px 0 0 0;
+            width: 400px;
+            height: 100vh;
+            background-color: rgb(14, 14, 14);
+            display: flex;
+            flex-flow: column;
+            position: relative;
+            z-index: 2;
+            transform: translate(0, 100%);
+            transition: all 350ms ease;
+            visibility: hidden;
+
+            &.opened {
+                transform: translate(0, 0);
+                visibility: visible;
+                transition: all 350ms ease;
+            }
+
+            .cross {
+                color: white;
+                font-size: 2em;
+                max-width: fit-content;
+                margin: 0.5em 0 0 0.7em;
+                background: none;
+                border: none;
+
+                &:active {
+                    color: rgb(255, 68, 21);
+                }
+            }
+
+            .allSaved {
+                margin: 2em 1em 1em 1em;
+                padding: 0em;
+
+                .saved {
+                    list-style: none;
+                    width: 100%;
+                    background-color: rgb(73, 73, 73);
+                    padding: 1em;
+                    border-radius: 30px;
+                    margin-bottom: 0.5em;
+
+                    
+                &.hidden{
+                    visibility: hidden;
+                }
+
+                    .dateSaved {
+                        display: flex;
+                        background-color: rgb(255, 68, 21);
+                        max-width: fit-content;
+                        padding: 0.1em 0.7em 0.1em 0.3em;
+                        margin-bottom: 0.5em;
+                        border-radius: 30px;
+                        align-items: center;
+
+                        .crossIcon {
+                            font-size: 1.2em;
+                            padding-right: 0.4em;
+                            color: #B92C00;
+                        }
+
+                        .savedSol {
+                            font-weight: 100;
+                            color: white;
+                            font-size: 1.2em;
+                            margin: 0;
+                        }
+                    }
+
+                    .savedData {
+                        display: flex;
+                        align-items: center;
+
+                        .savedTemp {
+                            img {
+                                max-width: 50px;
+                                margin-right: 1em;
+                            }
+                        }
+
+                        .savedTemperatura {
+                            margin-right: 0.6em;
+
+                            .savedAire {
+                                display: flex;
+
+                                img {
+                                    width: 30px;
+                                    height: 100%;
+                                    padding-right: 0.4em;
+                                }
+
+                                .savedAireMax {
+                                    @include maxType;
+                                    font-size: 1.2em;
+                                }
+
+                                .savedAireMin {
+                                    @include minType;
+                                    font-size: 1.2em;
+                                }
+                            }
+
+
+                            .savedSuelo {
+                                display: flex;
+
+                                img {
+                                    width: 30px;
+                                    height: 100%;
+                                    padding-right: 0.4em;
+                                }
+
+                                .savedSueloMax {
+                                    @include maxType;
+                                    font-size: 1.2em;
+                                }
+
+                                .savedSueloMin {
+                                    @include minType;
+                                    font-size: 1.2em;
+                                }
+                            }
+
+
+                        }
+
+                        .savedOtherData {
+                            display: flex;
+
+                            .savedSunrise {
+                                margin-right: 0.5em;
+
+                                img {
+                                    max-width: 30px;
+                                    margin-right: 1em;
+                                }
+
+                                .sunriseTime {
+                                    @include minType;
+                                    font-size: 1em;
+                                }
+                            }
+
+                            .savedSunset {
+                                img {
+                                    max-width: 30px;
+                                    margin-right: 1em;
+                                }
+
+                                .sunsetTime {
+                                    @include minType;
+                                    font-size: 1em;
+                                }
+                            }
+
+                            .savedPressure {
+                                img {
+                                    max-width: 30px;
+                                    margin-right: 1em;
+                                }
+
+                                .presion {
+                                    @include minType;
+                                    font-size: 1em;
+
+                                }
+                            }
+
+                        }
+
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+//BREAKPOINT
+@media only screen and (max-width: 500px) {
+
+    .app {
+        padding-top: 1em;
+
+
+        .menu {
+            display: flex;
+            flex-flow: row-reverse;
+            position: absolute;
+            transition: transform .5s ease-in-out;
+            width: 100%;
+            visibility: hidden;
+
+            .content {
+                border-radius: 30px 30px 0 0;
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                flex-flow: column;
+                z-index: 2;
+                transform: translate(0, 100);
+                transition: all 350ms ease;
+                
+                .cross {
+                    align-self: center;
+                    margin: 0.5em 0 0 0;
+                }
+
+                &.opened {
+                    transform: translate(100, 100);
+                    visibility: visible;
+                    transition: all 350ms ease;
+                }
+
+                .allSaved {
+                    margin: 1em 0 0.5em 0;
+
+                    .saved {
+                        .savedData {
+                            justify-content: space-between;
+                        }
+                    }
+                }
+
+
+            }
+        }
+
+    }
+
+}

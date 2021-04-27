@@ -1,0 +1,19 @@
+@mixin otherDataType {
+    font-weight: 100;
+    margin-bottom: 0;
+    color: rgb(158, 158, 158);
+}
+
+@mixin maxType {
+    font-weight: 100;
+    margin-bottom: 0;
+    margin-right: 0.4em;
+    color: rgb(255, 255, 255);
+}
+
+@mixin minType {
+    font-weight: 100;
+    color: rgb(158, 158, 158);
+    margin-bottom: 0;
+}
+

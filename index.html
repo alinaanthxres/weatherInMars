@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="theme-color" content="#fafafa" />
+
+    <title>Weather in Mars</title>
+
+    <meta name="Weathe rin Mars" content="" />
+    <link rel="icon" href="./assets/img/icon.png" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link href="./assets/css/main.css.map" />
+    <script src="./app/main.js"></script>
+    <script type="text/javascript"> console.log(localStorage) </script>
+    
+</head>
+
+<body>
+    <div class="app">
+
+        <input type="button" class="open" value="Menu">
+
+        <div class="date">
+            <span class="fa fa-star starIcon"></span>
+            <h1 id="sol">Sol 3456</h1>
+        </div>
+
+        <div class="marsData">
+
+            <section class="temp">
+                <img src="./assets/img/icons8-sol-100.png" alt="icon">
+            </section>
+
+            <section class="data">
+
+                <div class="temperatura">
+                    <div class="aire">
+                        <img src="./assets/img/icons8-polvo-100.png" alt="aireIcon">
+                        <h1 class="aireMax">68ºC</h1>
+                        <h1 class="aireMin">-176ºC</h1>
+                    </div>
+                    <hr class="line">
+                    <div class="suelo">
+                        <img src="./assets/img/icons8-elemento-tierra-100.png" alt="sueloIcon">
+                        <h1 class="sueloMax">78ºC</h1>
+                        <h1 class="sueloMin">-109ºC</h1>
+                    </div>
+                </div>
+
+                <div class="otherData">
+                    <div class="sunrise">
+                        <img src="./assets/img/icons8-salida-del-sol-100.png" alt="sunriseIcon">
+                        <h3 class="sunriseTime">06:08</h3>
+                    </div>
+                    <div class="sunset">
+                        <img src="./assets/img/icons8-puesta-de-sol-100.png" alt="sunsetIcon">
+                        <h3 class="sunsetTime">06:08</h3>
+                    </div>
+                    <div class="pressure">
+                        <img src="./assets/img/icons8-presión-atmosférica-100.png" alt="presionIcon">
+                        <h3 class="presion">1009 pha</h3>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+
+        <aside class="menu">
+
+            <div class="content">
+                <input type="button" class="cross" value="X">
+
+                <ul class="allSaved">
+
+                </ul>
+            </div>
+
+        </aside>
+    </div>
+
+
+
+
+</body>
+
+</html>
